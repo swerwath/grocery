@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+%w(Scott Chris Noah Sean).each do |name|
+  u = User.create email:name+"@gmail.com", password:"password"
+  u.save
+end
+
+%w(Flour Eggs Milk Cheese Avocado).each do |name|
+  i = Item.create name:name, price:rand(15), requesterId:rand(3), buyerId:rand(3)
+end
