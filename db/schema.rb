@@ -11,29 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901813753) do
+ActiveRecord::Schema.define(version: 20160901813755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "debts", force: :cascade do |t|
     t.decimal  "amount"
-    t.integer  "debtorID"
-    t.integer  "creditorID"
+    t.integer  "debtor_id"
+    t.integer  "creditor_id"
     t.boolean  "paid"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "item_buys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price",       default: 0,     null: false
-    t.integer  "requesterId"
-    t.integer  "buyerId"
-    t.boolean  "bought",      default: false, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "quantity",    default: 1,     null: false
+    t.integer  "price",        default: 0,     null: false
+    t.integer  "requester_id"
+    t.integer  "buyer_id"
+    t.boolean  "bought",       default: false, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "quantity",     default: 1,     null: false
   end
 
   create_table "users", force: :cascade do |t|

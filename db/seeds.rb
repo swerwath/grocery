@@ -12,5 +12,10 @@
 end
 
 %w(Flour Eggs Milk Cheese Avocado).each do |name|
-  i = Item.create name:name, price:rand(15), requesterId:rand(3), buyerId:rand(3)
+  buyer = User.all.sample
+  requeter = User.all.sample
+  i = Item.create name:name, price:rand(15)
+  i.requester = requester
+  i.buyer = buyer
+  i.save
 end

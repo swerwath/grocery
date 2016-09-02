@@ -3,8 +3,8 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :name
       t.decimal :price
-      t.integer :requesterId
-      t.integer :buyerId
+      t.integer :requester_id
+      t.integer :buyer_id
       t.boolean :bought
 
       t.timestamps null: false
